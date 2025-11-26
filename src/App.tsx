@@ -24,7 +24,8 @@ function App() {
             <h1>Stay tuned for updates!</h1>
             <div className="card">
                 <button onClick={() => setCount((count) => count + 1)}>
-                    ♥️{'   '}{count}
+                    <span style={{ marginRight: "12px" }}>♥️</span>
+                    {count}
                 </button>
             </div>
             <p className="read-the-docs">
