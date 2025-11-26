@@ -20,11 +20,11 @@ function App() {
                     />
                 </a>
             </div>
-            <h2>This will be my Vite + React portfolio website.</h2>
-            <h2>Stay tuned for updates!</h2>
+            <h1>This will be my Vite + React portfolio website.</h1>
+            <h1>Stay tuned for updates!</h1>
             <div className="card">
                 <button onClick={() => setCount((count) => count + 1)}>
-                    ♥️♥️♥️ {count}
+                    ♥️   {count}
                 </button>
             </div>
             <p className="read-the-docs">
