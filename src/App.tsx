@@ -1,10 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { ref, onValue, set } from "firebase/database";
+import type { DatabaseReference, Unsubscribe } from "firebase/database";
+import { db } from "./firebase";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
 function App() {
     const [count, setCount] = useState(0);
+    const [loading, setLoading] = useState(true);
+
+    // 从 Firebase 读取全局 count
+    useEffect(() => {
+        const countRef: DatabaseReference = ref(db, "count");
+        const unsubscribe: Unsubscribe = onValue(countRef, (snapshot) => {
+            const value = snapshot.val();
+            setCount(value ?? 0);
+            setLoading(false);
+        });
+
+        return () => unsubscribe();
+    }, []);
+
+    // 更新 count 时保存到 Firebase
+    const handleClick = () => {
+        const newCount: number = count + 1;
+        setCount(newCount);
+        set(ref(db, "count"), newCount);
+    };
 
     return (
         <>
@@ -23,9 +46,9 @@ function App() {
             <h1>This will be my Vite + React portfolio website.</h1>
             <h1>Stay tuned for updates!</h1>
             <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
+                <button onClick={handleClick} disabled={loading}>
                     <span style={{ marginRight: "12px" }}>♥️</span>
-                    {count}
+                    {loading ? "Loading..." : count}
                 </button>
             </div>
             <p className="read-the-docs">
