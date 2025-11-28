@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ref, onValue, set } from "firebase/database";
-import type { DatabaseReference, Unsubscribe } from "firebase/database";
+import type { DatabaseReference } from "firebase/database";
 import { db } from "./firebase";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
@@ -9,24 +9,23 @@ import "./App.css";
 function App() {
     const [count, setCount] = useState(0);
     const [loading, setLoading] = useState(true);
+    const countRef: DatabaseReference = ref(db, "count");
 
     // 从 Firebase 读取全局 count
-    useEffect(() => {
-        const countRef: DatabaseReference = ref(db, "count");
-        const unsubscribe: Unsubscribe = onValue(countRef, (snapshot) => {
-            const value = snapshot.val();
-            setCount(value ?? 0);
-            setLoading(false);
-        });
-
-        return () => unsubscribe();
-    }, []);
+    useEffect(
+        () =>
+            onValue(countRef, (snapshot) => {
+                setCount(snapshot.val() ?? 0);
+                setLoading(false);
+            }),
+        [countRef],
+    );
 
     // 更新 count 时保存到 Firebase
     const handleClick = () => {
         const newCount: number = count + 1;
         setCount(newCount);
-        set(ref(db, "count"), newCount);
+        set(countRef, newCount);
     };
 
     return (
