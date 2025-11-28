@@ -22,11 +22,12 @@ function App() {
     );
 
     // 更新 count 时保存到 Firebase
-    const handleClick = () => {
-        const newCount: number = count + 1;
-        setCount(newCount);
-        set(countRef, newCount);
-    };
+    const handleClick = () =>
+        setCount((prevCount) => {
+            const newCount = prevCount + 1;
+            set(countRef, newCount);
+            return newCount;
+        });
 
     return (
         <>
