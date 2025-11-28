@@ -1,3 +1,9 @@
+// Variables
+$logo-size: 6em;
+$logo-padding: 1.5em;
+$vite-color: #646cffaa;
+$react-color: #61dafbaa;
+
 #root {
     max-width: 1280px;
     margin: 0 auto;
@@ -6,16 +12,18 @@
 }
 
 .logo {
-    height: 6em;
-    padding: 1.5em;
+    height: $logo-size;
+    padding: $logo-padding;
     will-change: filter;
     transition: filter 300ms;
-}
-.logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-    filter: drop-shadow(0 0 2em #61dafbaa);
+
+    &:hover {
+        filter: drop-shadow(0 0 2em $vite-color);
+    }
+
+    &.react:hover {
+        filter: drop-shadow(0 0 2em $react-color);
+    }
 }
 
 @keyframes logo-spin {
