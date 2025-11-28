@@ -13,7 +13,7 @@ const firebaseConfig = {
     projectId: "mason-s-portfolio",
     storageBucket: "mason-s-portfolio.firebasestorage.app",
     messagingSenderId: "971185016934",
-    appId: "1:971185016934:web:a13473a4a3eee8f0775da7"
+    appId: "1:971185016934:web:a13473a4a3eee8f0775da7",
 };
 
 // Initialize Firebase
