@@ -25,7 +25,9 @@ function App() {
     const handleClick = () =>
         setCount((prevCount) => {
             const newCount = prevCount + 1;
-            set(countRef, newCount);
+            set(countRef, newCount).catch((err) =>
+                console.error("保存到 Firebase 失败: ", err),
+            );
             return newCount;
         });
 
