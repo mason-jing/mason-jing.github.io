@@ -1,21 +1,18 @@
 import { useState, useEffect } from "react";
-import { ref, onValue, set } from "firebase/database";
-import type { DatabaseReference } from "firebase/database";
+import { ref, onValue, set, DataSnapshot } from "firebase/database";
+import type { DatabaseReference, Unsubscribe } from "firebase/database";
 import { db } from "./firebase";
-import { useParams, useNavigate } from "react-router-dom";
+import {
+    useParams,
+    useNavigate,
+    type NavigateFunction,
+} from "react-router-dom";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
 import "./App.scss";
+import type { PageContent, SupportedLanguage } from "./types";
 
-const content: {
-    [key: string]: {
-        h1: string;
-        h2: string;
-        button: string;
-        p: string;
-        toggle: string;
-    };
-} = {
+const content: Record<SupportedLanguage, PageContent> = {
     "en-US": {
         h1: "Welcome to my portfolio website.",
         h2: "Stay tuned for updates!",
@@ -32,36 +29,43 @@ const content: {
     },
 };
 
+function normalizeLang(lang?: string): SupportedLanguage {
+    return lang?.toLowerCase() === "zh-cn" ? "zh-CN" : "en-US";
+}
+
 function App() {
     const [count, setCount] = useState(0);
     const [loading, setLoading] = useState(true);
     const countRef: DatabaseReference = ref(db, "count");
-    const { lang } = useParams<{ lang: string }>();
-    const navigate = useNavigate();
-    const currentContent = content[lang ?? "en-US"] ?? content["en-US"];
+    const navigate: NavigateFunction = useNavigate();
+    const normalizedLang: SupportedLanguage = normalizeLang(
+        useParams<{ lang?: string }>().lang,
+    );
+    const currentContent: PageContent = content[normalizedLang];
 
     // 从 Firebase 读取全局 count
     useEffect(
-        () =>
-            onValue(countRef, (snapshot) => {
-                setCount(snapshot.val() ?? 0);
+        (): Unsubscribe =>
+            onValue(countRef, (snapshot: DataSnapshot): void => {
+                const value: any = snapshot.val();
+                setCount(typeof value === "number" ? value : 0);
                 setLoading(false);
             }),
         [countRef],
     );
 
     // 更新 count 时保存到 Firebase
-    const handleClick = () =>
-        setCount((prevCount) => {
-            const newCount = prevCount + 1;
-            set(countRef, newCount).catch((err) =>
+    const handleClick: () => void = (): void =>
+        setCount((prevCount: number): number => {
+            const newCount: number = prevCount + 1;
+            set(countRef, newCount).catch((err: unknown): void =>
                 console.error("保存到 Firebase 失败: ", err),
             );
             return newCount;
         });
 
-    const handleToggle = () => {
-        navigate(`/${lang === "en-US" ? "zh-CN" : "en-US"}`);
+    const handleToggle: () => void = (): void => {
+        navigate(`/${normalizedLang === "en-US" ? "zh-CN" : "en-US"}`);
     };
 
     return (
