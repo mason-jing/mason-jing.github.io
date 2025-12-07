@@ -17,14 +17,14 @@ const content: {
     };
 } = {
     "en-US": {
-        h1: "This will be my Vite + React portfolio website.",
+        h1: "Welcome to my portfolio website.",
         h2: "Stay tuned for updates!",
         button: "Loading...",
         p: "Click on the Vite and React logos to learn more",
         toggle: "中文",
     },
     "zh-CN": {
-        h1: "这将是我的 Vite + React 个人作品集网站。",
+        h1: "欢迎来到我的个人作品集网站。",
         h2: "敬请期待更新！",
         button: "加载中...",
         p: "点击 Vite 和 React 的图标以了解更多信息",
