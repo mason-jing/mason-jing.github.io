@@ -48,3 +48,13 @@ $react-color: #61dafbaa;
 .read-the-docs {
     color: #888;
 }
+
+.language-toggle-container {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+
+    button {
+        width: 90px;
+    }
+}
