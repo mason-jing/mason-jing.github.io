@@ -4,21 +4,30 @@ import type { DatabaseReference, Unsubscribe } from "firebase/database";
 import { db } from "./firebase";
 import { useParams, useNavigate } from "react-router-dom";
 import type { NavigateFunction } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { normalizeLang, toggleLanguage } from "./locales";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
 import "./App.scss";
-import type { PageContent, SupportedLanguage } from "./types";
-import { getTranslation, normalizeLang } from "./locales";
+import type { SupportedLanguage } from "./types";
 
 function App() {
     const [count, setCount] = useState(0);
     const [loading, setLoading] = useState(true);
     const countRef: DatabaseReference = ref(db, "count");
     const navigate: NavigateFunction = useNavigate();
-    const normalizedLang: SupportedLanguage = normalizeLang(
-        useParams<{ lang?: string }>().lang,
-    );
-    const currentContent: PageContent = getTranslation(normalizedLang);
+    const { lang } = useParams<{ lang?: string }>();
+    const { t, i18n } = useTranslation();
+
+    // Sync route param with i18n language
+    useEffect((): void => {
+        const normalizedLang: SupportedLanguage = normalizeLang(lang);
+        if (i18n.language !== normalizedLang) {
+            i18n.changeLanguage(normalizedLang).catch((err: unknown): void =>
+                console.error("切换语言失败: ", err),
+            );
+        }
+    }, [lang, i18n]);
 
     // 从 Firebase 读取全局 count
     useEffect(
@@ -42,13 +51,13 @@ function App() {
         });
 
     const handleToggle: () => void = (): void => {
-        navigate(`/${normalizedLang === "en-US" ? "zh-CN" : "en-US"}`);
+        navigate(`/${toggleLanguage(normalizeLang(i18n.language))}`);
     };
 
     return (
         <>
             <div className="language-toggle-container">
-                <button onClick={handleToggle}>{currentContent.toggle}</button>
+                <button onClick={handleToggle}>{t("toggle")}</button>
             </div>
             <div>
                 <a href="https://vite.dev" target="_blank">
@@ -62,15 +71,15 @@ function App() {
                     />
                 </a>
             </div>
-            <h1>{currentContent.h1}</h1>
-            <h1>{currentContent.h2}</h1>
+            <h1>{t("h1")}</h1>
+            <h1>{t("h2")}</h1>
             <div className="card">
                 <button onClick={handleClick} disabled={loading}>
                     <span style={{ marginRight: "12px" }}>♥️</span>
-                    {loading ? currentContent.button : count}
+                    {loading ? t("button") : count}
                 </button>
             </div>
-            <p className="read-the-docs">{currentContent.p}</p>
+            <p className="read-the-docs">{t("p")}</p>
         </>
     );
 }
