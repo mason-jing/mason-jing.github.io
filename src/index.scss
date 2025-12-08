@@ -7,6 +7,7 @@ $text-dark: rgba(255, 255, 255, 0.87);
 $text-light: #213547;
 $button-bg-dark: #1a1a1a;
 $button-bg-light: #f9f9f9;
+
 :root {
     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
@@ -105,34 +106,7 @@ button {
 
 @media (prefers-color-scheme: light) {
     :root {
-        color: $text-light;
-        background-color: $bg-light;
-    }
-
-    a:hover {
-        color: #747bff;
-    }
-
-    button {
-        background: rgba(255, 255, 255, 0.4);
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        color: $text-light;
-        box-shadow:
-            0 8px 32px 0 rgba(31, 38, 135, 0.15),
-            inset 0 1px 1px rgba(255, 255, 255, 0.5);
-
-        &:hover {
-            background: rgba(255, 255, 255, 0.6);
-            border-color: rgba(0, 0, 0, 0.15);
-            box-shadow:
-                0 12px 40px 0 rgba(31, 38, 135, 0.2),
-                inset 0 1px 1px rgba(255, 255, 255, 0.6);
-        }
-
-        &:active {
-            box-shadow:
-                0 4px 16px 0 rgba(31, 38, 135, 0.12),
-                inset 0 1px 1px rgba(255, 255, 255, 0.5);
-        }
+        color: $text-dark;
+        background-color: $bg-dark;
     }
 }
