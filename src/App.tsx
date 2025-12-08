@@ -8,27 +8,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
 import "./App.scss";
 import type { PageContent, SupportedLanguage } from "./types";
-
-const content: Record<SupportedLanguage, PageContent> = {
-    "en-US": {
-        h1: "Welcome to my portfolio website.",
-        h2: "Stay tuned for updates!",
-        button: "Loading...",
-        p: "Click on the Vite and React logos to learn more",
-        toggle: "中文",
-    },
-    "zh-CN": {
-        h1: "欢迎来到我的个人作品集网站。",
-        h2: "敬请期待更新！",
-        button: "加载中...",
-        p: "点击 Vite 和 React 的图标以了解更多信息",
-        toggle: "English",
-    },
-};
-
-function normalizeLang(lang?: string): SupportedLanguage {
-    return lang?.toLowerCase() === "zh-cn" ? "zh-CN" : "en-US";
-}
+import { getTranslation, normalizeLang } from "./locales";
 
 function App() {
     const [count, setCount] = useState(0);
@@ -38,7 +18,7 @@ function App() {
     const normalizedLang: SupportedLanguage = normalizeLang(
         useParams<{ lang?: string }>().lang,
     );
-    const currentContent: PageContent = content[normalizedLang];
+    const currentContent: PageContent = getTranslation(normalizedLang);
 
     // 从 Firebase 读取全局 count
     useEffect(

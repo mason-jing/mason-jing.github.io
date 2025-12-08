@@ -6,5 +6,5 @@ export type PageContent = {
     toggle: string;
 };
 
-export const supportedLanguages = ["en-US", "zh-CN"] as const;
+const supportedLanguages = ["en-US", "zh-CN"] as const;
 export type SupportedLanguage = (typeof supportedLanguages)[number];
