@@ -24,11 +24,11 @@ $button-bg-light: #f9f9f9;
 
 // Language-specific fonts
 html[lang="en-US"] {
-    font-family: "Comic Sans MS", "Chalkboard SE", system-ui, sans-serif;
+    font-family: "Comic Sans MS", "Chalkboard SE", system-ui, sans-serif !important;
 }
 
 html[lang="zh-CN"] {
-    font-family: "华文楷体", "Kaiti SC", system-ui, sans-serif;
+    font-family: "Kaiti SC", 华文楷体, STKaiti, system-ui, sans-serif !important;
 }
 
 a {
