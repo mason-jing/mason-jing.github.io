@@ -8,19 +8,7 @@ $text-light: #213547;
 $button-bg-dark: #1a1a1a;
 $button-bg-light: #f9f9f9;
 :root {
-    font-family:
-        // English
-        "Comic Sans MS",
-        "Chalkboard SE",
-        // Chinese
-        "华文楷体",
-        "Kaiti SC",
-        // Fallbacks
-        system-ui,
-        Avenir,
-        Helvetica,
-        Arial,
-        sans-serif;
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
 
@@ -32,6 +20,15 @@ $button-bg-light: #f9f9f9;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+// Language-specific fonts
+html[lang="en-US"] {
+    font-family: "Comic Sans MS", "Chalkboard SE", system-ui, sans-serif;
+}
+
+html[lang="zh-CN"] {
+    font-family: "华文楷体", "Kaiti SC", system-ui, sans-serif;
 }
 
 a {

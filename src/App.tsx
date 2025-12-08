@@ -27,6 +27,8 @@ function App() {
                 console.error("切换语言失败: ", err),
             );
         }
+        // Update html lang attribute for language-specific styling
+        document.documentElement.lang = normalizedLang;
     }, [lang, i18n]);
 
     // 从 Firebase 读取全局 count
