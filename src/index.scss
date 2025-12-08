@@ -9,8 +9,18 @@ $button-bg-dark: #1a1a1a;
 $button-bg-light: #f9f9f9;
 :root {
     font-family:
-        "Comic Sans MS", "Chalkboard SE", "华文楷体", system-ui, Avenir,
-        Helvetica, Arial, sans-serif;
+        // English
+        "Comic Sans MS",
+        "Chalkboard SE",
+        // Chinese
+        "华文楷体",
+        "Kaiti SC",
+        // Fallbacks
+        system-ui,
+        Avenir,
+        Helvetica,
+        Arial,
+        sans-serif;
     line-height: 1.5;
     font-weight: 400;
 
@@ -40,9 +50,9 @@ body {
     place-items: center;
     min-width: 320px;
     min-height: 100vh;
-    background: 
+    background:
         linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url('./assets/joshua-tree.jpg') center/cover no-repeat fixed;
+        url("./assets/joshua-tree.jpg") center/cover no-repeat fixed;
 }
 
 h1 {
@@ -59,29 +69,29 @@ button {
     font-family: inherit;
     color: inherit;
     cursor: pointer;
-    
+
     // Glassmorphism effect
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    box-shadow: 
+    box-shadow:
         0 8px 32px 0 rgba(0, 0, 0, 0.37),
         inset 0 1px 1px rgba(255, 255, 255, 0.1);
-    
+
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
         background: rgba(255, 255, 255, 0.1);
         border-color: rgba(255, 255, 255, 0.3);
         transform: translateY(-2px);
-        box-shadow: 
+        box-shadow:
             0 12px 40px 0 rgba(0, 0, 0, 0.45),
             inset 0 1px 1px rgba(255, 255, 255, 0.15);
     }
 
     &:active {
         transform: translateY(0);
-        box-shadow: 
+        box-shadow:
             0 4px 16px 0 rgba(0, 0, 0, 0.3),
             inset 0 1px 1px rgba(255, 255, 255, 0.1);
     }
@@ -89,7 +99,7 @@ button {
     &:focus,
     &:focus-visible {
         outline: none;
-        box-shadow: 
+        box-shadow:
             0 8px 32px 0 rgba(0, 0, 0, 0.37),
             inset 0 1px 1px rgba(255, 255, 255, 0.1),
             0 0 0 3px rgba(100, 108, 255, 0.4);
@@ -110,20 +120,20 @@ button {
         background: rgba(255, 255, 255, 0.4);
         border: 1px solid rgba(0, 0, 0, 0.1);
         color: $text-light;
-        box-shadow: 
+        box-shadow:
             0 8px 32px 0 rgba(31, 38, 135, 0.15),
             inset 0 1px 1px rgba(255, 255, 255, 0.5);
 
         &:hover {
             background: rgba(255, 255, 255, 0.6);
             border-color: rgba(0, 0, 0, 0.15);
-            box-shadow: 
+            box-shadow:
                 0 12px 40px 0 rgba(31, 38, 135, 0.2),
                 inset 0 1px 1px rgba(255, 255, 255, 0.6);
         }
 
         &:active {
-            box-shadow: 
+            box-shadow:
                 0 4px 16px 0 rgba(31, 38, 135, 0.12),
                 inset 0 1px 1px rgba(255, 255, 255, 0.5);
         }
