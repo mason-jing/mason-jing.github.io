@@ -9,14 +9,8 @@ import "./index.scss";
 import App from "./App.tsx";
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Navigate to="/en-US" replace />,
-    },
-    {
-        path: "/:lang",
-        element: <App />,
-    },
+    { path: "/", element: <Navigate to="/en-US" replace /> },
+    { path: "/:lang", element: <App /> },
 ]);
 
 createRoot(document.getElementById("root")!).render(

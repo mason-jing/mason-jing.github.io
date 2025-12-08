@@ -2,11 +2,8 @@ import { useState, useEffect } from "react";
 import { ref, onValue, set, DataSnapshot } from "firebase/database";
 import type { DatabaseReference, Unsubscribe } from "firebase/database";
 import { db } from "./firebase";
-import {
-    useParams,
-    useNavigate,
-    type NavigateFunction,
-} from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import type { NavigateFunction } from "react-router-dom";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
 import "./App.scss";
