@@ -8,8 +8,28 @@ $text-light: #213547;
 $button-bg-dark: #1a1a1a;
 $button-bg-light: #f9f9f9;
 
+// Font stacks
+$font-en: "Chalkboard SE Custom", "Comic Sans MS", "Chalkboard SE";
+$font-zh: "Kaiti Custom", 华文楷体, "Kaiti SC";
+
+// Custom fonts
+@font-face {
+    font-family: "Chalkboard SE Custom";
+    src: url("./fonts/Chalkboard-SE.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Kaiti Custom";
+    src: url("./fonts/华文楷体.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
 
@@ -25,11 +45,24 @@ $button-bg-light: #f9f9f9;
 
 // Language-specific fonts
 html[lang="en-US"] {
-    font-family: "Comic Sans MS", "Chalkboard SE", system-ui, sans-serif !important;
+    font-family: $font-en;
+
+    .language-toggle-container button {
+        font-family: $font-zh !important;
+    }
 }
 
 html[lang="zh-CN"] {
-    font-family: "Kaiti SC", 华文楷体, STKaiti, system-ui, sans-serif !important;
+    font-family: $font-zh;
+
+    .language-toggle-container button {
+        font-family: $font-en !important;
+    }
+}
+
+// Keep like button in English font
+.like-button {
+    font-family: $font-en !important;
 }
 
 a {
