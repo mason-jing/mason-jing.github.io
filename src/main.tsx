@@ -6,6 +6,7 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import "./index.scss";
+import "./locales"; // Initialize i18n
 import App from "./App.tsx";
 
 const router = createBrowserRouter([
