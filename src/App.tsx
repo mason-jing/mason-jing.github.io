@@ -76,7 +76,11 @@ function App() {
             <h1>{t("h1")}</h1>
             <h1>{t("h2")}</h1>
             <div className="card">
-                <button onClick={handleClick} disabled={loading}>
+                <button
+                    className="like-button"
+                    onClick={handleClick}
+                    disabled={loading}
+                >
                     <span style={{ marginRight: "12px" }}>♥️</span>
                     {loading ? t("button") : count}
                 </button>
