@@ -56,5 +56,10 @@ $react-color: #61dafbaa;
 
     button {
         width: 90px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
     }
 }
