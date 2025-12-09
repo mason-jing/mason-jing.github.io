@@ -53,7 +53,9 @@ function App() {
         });
 
     const handleToggle: () => void = (): void => {
-        navigate(`/${toggleLanguage(normalizeLang(i18n.language))}`);
+        navigate(`/${toggleLanguage(normalizeLang(i18n.language))}`, {
+            replace: true,
+        });
     };
 
     return (
