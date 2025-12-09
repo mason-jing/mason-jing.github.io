@@ -9,12 +9,12 @@ $button-bg-dark: #1a1a1a;
 $button-bg-light: #f9f9f9;
 
 // Font stacks
-$font-en: "Chalkboard SE Custom", "Comic Sans MS", "Chalkboard SE";
-$font-zh: "Kaiti Custom", 华文楷体, "Kaiti SC";
+$font-en: "Chalkboard SE";
+$font-zh: "Chalkboard SE", "DynaComware Handwriting";
 
 // Custom fonts
 @font-face {
-    font-family: "Chalkboard SE Custom";
+    font-family: "Chalkboard SE";
     src: url("./fonts/Chalkboard-SE.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
@@ -22,12 +22,44 @@ $font-zh: "Kaiti Custom", 华文楷体, "Kaiti SC";
 }
 
 @font-face {
-    font-family: "Kaiti Custom";
+    font-family: "DynaComware Handwriting";
+    src: url("./fonts/华康手札体.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Kaiti";
     src: url("./fonts/华文楷体.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
+
+// @font-face {
+//     font-family: "MeituanType";
+//     src: url("./fonts/meituantype-Light.ttf") format("truetype");
+//     font-weight: 300;
+//     font-style: normal;
+//     font-display: swap;
+// }
+
+// @font-face {
+//     font-family: "MeituanType";
+//     src: url("./fonts/meituantype-Regular.ttf") format("truetype");
+//     font-weight: 400;
+//     font-style: normal;
+//     font-display: swap;
+// }
+
+// @font-face {
+//     font-family: "MeituanType";
+//     src: url("./fonts/meituantype-Bold.ttf") format("truetype");
+//     font-weight: 700;
+//     font-style: normal;
+//     font-display: swap;
+// }
 
 :root {
     line-height: 1.5;
