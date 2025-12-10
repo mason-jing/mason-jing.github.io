@@ -9,10 +9,8 @@ $text-light: #213547;
 $button-bg-dark: #1a1a1a;
 $button-bg-light: #f9f9f9;
 
-$font-en: "Chalkboard SE";
-$font-zh: "Chalkboard SE", "DynaComware Handwriting";
-
 :root {
+    font-family: "Chalkboard SE", "DynaComware Handwriting", sans-serif;
     line-height: 1.5;
     font-weight: 400;
 
@@ -28,28 +26,6 @@ $font-zh: "Chalkboard SE", "DynaComware Handwriting";
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
-}
-
-// Language-specific fonts
-html[lang="en-US"] {
-    font-family: $font-en;
-
-    .language-toggle-container button {
-        font-family: $font-zh !important;
-    }
-}
-
-html[lang="zh-CN"] {
-    font-family: $font-zh;
-
-    .language-toggle-container button {
-        font-family: $font-en !important;
-    }
-}
-
-// Keep like button in English font
-.like-button {
-    font-family: $font-en !important;
 }
 
 a {
