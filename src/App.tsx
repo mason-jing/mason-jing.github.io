@@ -6,14 +6,16 @@ import { useParams, useNavigate } from "react-router-dom";
 import type { NavigateFunction } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { normalizeLang, toggleLanguage } from "./locales";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "./assets/vite.svg";
+import instagramLogo from "./assets/instagram.svg";
+import linkedinLogo from "./assets/linkedin.svg";
 import "./App.scss";
 import type { SupportedLanguage } from "./types";
+import { SOCIAL_LINKS } from "./links";
+import { useDeepLink } from "./hooks/useDeepLink";
 
 function App() {
-    const [count, setCount] = useState(0);
-    const [loading, setLoading] = useState(true);
+    const [count, setCount] = useState<number>(0);
+    const [loading, setLoading] = useState<boolean>(true);
     const countRef: DatabaseReference = ref(db, "count");
     const navigate: NavigateFunction = useNavigate();
     const { lang } = useParams<{ lang?: string }>();
@@ -58,20 +60,44 @@ function App() {
         });
     };
 
+    const handleInstagramClick = useDeepLink(
+        SOCIAL_LINKS.instagram.webUrl,
+        SOCIAL_LINKS.instagram.appUrl,
+    );
+
+    const handleLinkedInClick = useDeepLink(
+        SOCIAL_LINKS.linkedin.webUrl,
+        SOCIAL_LINKS.linkedin.appUrl,
+    );
+
     return (
         <>
             <div className="language-toggle-container">
                 <button onClick={handleToggle}>{t("toggle")}</button>
             </div>
             <div>
-                <a href="https://vite.dev" target="_blank">
-                    <img src={viteLogo} className="logo" alt="Vite logo" />
-                </a>
-                <a href="https://react.dev" target="_blank">
+                <a
+                    href={SOCIAL_LINKS.instagram.webUrl}
+                    target="_blank"
+                    onClick={handleInstagramClick}
+                    rel="noopener noreferrer"
+                >
                     <img
-                        src={reactLogo}
-                        className="logo react"
-                        alt="React logo"
+                        src={instagramLogo}
+                        className="logo"
+                        alt="Instagram logo"
+                    />
+                </a>
+                <a
+                    href={SOCIAL_LINKS.linkedin.webUrl}
+                    target="_blank"
+                    onClick={handleLinkedInClick}
+                    rel="noopener noreferrer"
+                >
+                    <img
+                        src={linkedinLogo}
+                        className="logo linkedin"
+                        alt="LinkedIn logo"
                     />
                 </a>
             </div>

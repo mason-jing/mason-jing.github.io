@@ -1,8 +1,8 @@
 // Variables
 $logo-size: 6em;
 $logo-padding: 1.5em;
-$vite-color: #646cffaa;
-$react-color: #61dafbaa;
+$instagram-color: #e1306caa;
+$linkedin-color: #0a66c2aa;
 
 #root {
     max-width: 1280px;
@@ -18,26 +18,11 @@ $react-color: #61dafbaa;
     transition: filter 300ms;
 
     &:hover {
-        filter: drop-shadow(0 0 2em $vite-color);
+        filter: drop-shadow(0 0 2em $instagram-color);
     }
 
-    &.react:hover {
-        filter: drop-shadow(0 0 2em $react-color);
-    }
-}
-
-@keyframes logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    a:nth-of-type(2) .logo {
-        animation: logo-spin infinite 20s linear;
+    &.linkedin:hover {
+        filter: drop-shadow(0 0 2em $linkedin-color);
     }
 }
 
