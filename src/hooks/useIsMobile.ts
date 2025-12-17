@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 
 /**
- * Responsive helper: returns true when viewport width is below the breakpoint.
+ * Returns true when viewport width is below the breakpoint (responsive detection).
  * Default breakpoint is 768px (tablet and smaller).
+ * Uses matchMedia for viewport-based detection, not user agent detection.
+ *
+ * SSR-safe: guards window access.
  */
 export function useIsMobile(mobileBreakpoint: number = 768): boolean {
     const getIsMobile = (): boolean =>
@@ -21,25 +24,14 @@ export function useIsMobile(mobileBreakpoint: number = 768): boolean {
             `(max-width: ${mobileBreakpoint - 1}px)`,
         );
 
-        const onChange = (): void => setIsMobile(getIsMobile());
+        const onChange = (): void => setIsMobile(mql.matches);
 
-        // Modern + legacy listeners for broader browser support
-        if (mql.addEventListener) {
-            mql.addEventListener("change", onChange);
-        } else if ((mql as any).addListener) {
-            (mql as any).addListener(onChange);
-        }
+        mql.addEventListener("change", onChange);
 
-        // Sync immediately on mount
-        setIsMobile(getIsMobile());
+        // Sync with current state
+        setIsMobile(mql.matches);
 
-        return (): void => {
-            if (mql.removeEventListener) {
-                mql.removeEventListener("change", onChange);
-            } else if ((mql as any).removeListener) {
-                (mql as any).removeListener(onChange);
-            }
-        };
+        return (): void => mql.removeEventListener("change", onChange);
     }, [mobileBreakpoint]);
 
     return isMobile;
