@@ -1,2 +1,5 @@
-export * from "./languageTypes";
-export * from "./socialTypes";
+// Language types
+export type { PageContent, SupportedLanguage } from "./languageTypes";
+
+// Social types
+export type { SocialLink, SocialPlatform } from "./socialTypes";

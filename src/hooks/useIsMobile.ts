@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 /**
  * Returns true when viewport width is below the breakpoint (responsive detection).
  * Default breakpoint is 768px (tablet and smaller).
+ * 
  * Uses matchMedia for viewport-based detection, not user agent detection.
  *
  * SSR-safe: guards window access.
  */
-export function useIsMobile(mobileBreakpoint: number = 768): boolean {
+export const useIsMobile = (mobileBreakpoint: number = 768): boolean => {
     const getIsMobile = (): boolean =>
         typeof window !== "undefined"
             ? window.innerWidth < mobileBreakpoint
@@ -35,4 +36,4 @@ export function useIsMobile(mobileBreakpoint: number = 768): boolean {
     }, [mobileBreakpoint]);
 
     return isMobile;
-}
+};

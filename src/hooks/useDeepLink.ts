@@ -1,9 +1,12 @@
 import type { MouseEvent } from "react";
+
 import { useIsMobileDevice } from "./useIsMobileDevice";
 
-export type UseDeepLinkOptions = {
+export type DeepLinkHandler = (event: MouseEvent<HTMLAnchorElement>) => void;
+
+export interface UseDeepLinkOptions {
     fallbackDelayMs?: number;
-};
+}
 
 /**
  * Returns an onClick handler that, on mobile devices, attempts to open a native-app deep link
@@ -11,11 +14,11 @@ export type UseDeepLinkOptions = {
  *
  * SSR-safe: never touches window/document during render.
  */
-export function useDeepLink(
+export const useDeepLink = (
     webUrl: string,
     appUrl: string,
     options: UseDeepLinkOptions = {},
-): (event: MouseEvent<HTMLAnchorElement>) => void {
+): DeepLinkHandler => {
     const { fallbackDelayMs = 700 } = options;
 
     const isMobileDevice = useIsMobileDevice();
@@ -72,4 +75,4 @@ export function useDeepLink(
         // Attempt deep link (use href instead of replace to allow confirmation dialogs)
         window.location.href = appUrl;
     };
-}
+};
