@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import "./styles/index.scss";
 import "./locales"; // Initialize i18n
-import App from "./components/App";
+import { App } from "./components";
 
 const router = createBrowserRouter([
     { path: "/", element: <Navigate to="/en-US" replace /> },
