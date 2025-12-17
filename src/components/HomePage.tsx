@@ -5,9 +5,9 @@ import { useCounter, useLanguage, useSocialLink } from "../hooks";
 import instagramLogo from "../assets/instagram.svg";
 import linkedinLogo from "../assets/linkedin.svg";
 
-import "../styles/App.scss";
+import "../styles/HomePage.scss";
 
-function App() {
+function HomePage() {
     const { t } = useTranslation();
     const { count, loading, handleClick } = useCounter();
     const { handleToggle } = useLanguage();
@@ -56,9 +56,9 @@ function App() {
                     {loading ? t("button") : count}
                 </button>
             </div>
-            <p className="read-the-docs">{t("p")}</p>
+            <p className="visit-my-profiles">{t("p")}</p>
         </>
     );
 }
 
-export default App;
+export default HomePage;
