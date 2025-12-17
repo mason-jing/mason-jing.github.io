@@ -6,14 +6,14 @@ import {
     RouterProvider,
 } from "react-router-dom";
 
-import { App } from "./components";
+import { HomePage } from "./components";
 import "./locales"; // Initialize i18n
 
 import "./styles/index.scss";
 
 const router = createBrowserRouter([
     { path: "/", element: <Navigate to="/en-US" replace /> },
-    { path: "/:lang", element: <App /> },
+    { path: "/:lang", element: <HomePage /> },
 ]);
 
 createRoot(document.getElementById("root")!).render(
