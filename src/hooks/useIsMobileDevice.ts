@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 /**
  * Returns true if the current device is a mobile device (device-based detection).
- * 
+ *
  * Uses react-device-detect for user agent detection, not viewport-based.
  *
  * SSR-safe: dynamically imports react-device-detect in useEffect.
