@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import { normalizeLang, toggleLanguage } from "./locales";
 import instagramLogo from "./assets/instagram.svg";
 import linkedinLogo from "./assets/linkedin.svg";
-import "./App.scss";
+import "./styles/App.scss";
 import type { SupportedLanguage } from "./types";
 import { SOCIAL_LINKS } from "./links";
 import { useDeepLink } from "./hooks/useDeepLink";
