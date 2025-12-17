@@ -7,7 +7,7 @@ import linkedinLogo from "../assets/linkedin.svg";
 
 import "../styles/HomePage.scss";
 
-function HomePage() {
+export default function HomePage() {
     const { t } = useTranslation();
     const { count, loading, handleClick } = useCounter();
     const { handleToggle } = useLanguage();
@@ -60,5 +60,3 @@ function HomePage() {
         </>
     );
 }
-
-export default HomePage;

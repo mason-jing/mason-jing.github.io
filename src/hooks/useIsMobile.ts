@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 /**
  * Returns true when viewport width is below the breakpoint (responsive detection).
  * Default breakpoint is 768px (tablet and smaller).
- * 
+ *
  * Uses matchMedia for viewport-based detection, not user agent detection.
  *
  * SSR-safe: guards window access.

@@ -3,12 +3,18 @@ import { useNavigate, useParams } from "react-router-dom";
 import type { NavigateFunction } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { normalizeLang, toggleLanguage } from "../locales";
 import type { SupportedLanguage } from "../types";
 
 export interface UseLanguageReturn {
     handleToggle: () => void;
 }
+
+// Helper functions for language management
+const normalizeLang = (lang?: string): SupportedLanguage =>
+    lang?.toLowerCase() === "zh-cn" ? "zh-CN" : "en-US";
+
+const toggleLanguage = (currentLang: SupportedLanguage): SupportedLanguage =>
+    currentLang === "en-US" ? "zh-CN" : "en-US";
 
 export const useLanguage = (): UseLanguageReturn => {
     const navigate: NavigateFunction = useNavigate();
