@@ -5,9 +5,9 @@ import {
     Navigate,
     RouterProvider,
 } from "react-router-dom";
-import "./index.scss";
+import "./styles/index.scss";
 import "./locales"; // Initialize i18n
-import App from "./App.tsx";
+import App from "./components/App";
 
 const router = createBrowserRouter([
     { path: "/", element: <Navigate to="/en-US" replace /> },
