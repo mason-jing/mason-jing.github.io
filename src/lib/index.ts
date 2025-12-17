@@ -1,1 +1,2 @@
-export * from "./firebase";
+// Firebase exports
+export { db } from "./firebase";

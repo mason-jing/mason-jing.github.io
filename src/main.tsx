@@ -5,9 +5,11 @@ import {
     Navigate,
     RouterProvider,
 } from "react-router-dom";
-import "./styles/index.scss";
-import "./locales"; // Initialize i18n
+
 import { App } from "./components";
+import "./locales"; // Initialize i18n
+
+import "./styles/index.scss";
 
 const router = createBrowserRouter([
     { path: "/", element: <Navigate to="/en-US" replace /> },
