@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import { ref, onValue, set, DataSnapshot } from "firebase/database";
 import type { DatabaseReference, Unsubscribe } from "firebase/database";
-import { db } from "./firebase";
+import { db } from "../lib/firebase";
 import { useParams, useNavigate } from "react-router-dom";
 import type { NavigateFunction } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { normalizeLang, toggleLanguage } from "./locales";
-import instagramLogo from "./assets/instagram.svg";
-import linkedinLogo from "./assets/linkedin.svg";
-import "./styles/App.scss";
-import type { SupportedLanguage } from "./types";
-import { SOCIAL_LINKS } from "./links";
-import { useDeepLink } from "./hooks/useDeepLink";
+import { normalizeLang, toggleLanguage } from "../locales";
+import instagramLogo from "../assets/instagram.svg";
+import linkedinLogo from "../assets/linkedin.svg";
+import "../styles/App.scss";
+import type { SupportedLanguage } from "../types";
+import { SOCIAL_LINKS } from "../config/links";
+import { useDeepLink } from "../hooks/useDeepLink";
 
 function App() {
     const [count, setCount] = useState<number>(0);
