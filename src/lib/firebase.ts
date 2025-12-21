@@ -2,9 +2,11 @@
 import { initializeApp, type FirebaseApp } from "firebase/app";
 import { getDatabase, Database } from "firebase/database";
 
+import type { FirebaseConfig } from "../types";
+
 // Firebase configuration from environment variables
 // See .env.example for required variables
-const firebaseConfig = {
+const firebaseConfig: FirebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
     databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,

@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     { path: "/:lang", element: <HomePage /> },
 ]);
 
-(async () => {
+(async (): Promise<void> => {
     await i18nInitPromise;
     createRoot(document.getElementById("root")!).render(
         <StrictMode>
