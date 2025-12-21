@@ -7,12 +7,12 @@ export interface UseSocialLinkReturn {
 }
 
 export const useSocialLink = (): UseSocialLinkReturn => {
-    const handleInstagramClick = useDeepLink(
+    const handleInstagramClick: DeepLinkHandler = useDeepLink(
         SOCIAL_LINKS.instagram.webUrl,
         SOCIAL_LINKS.instagram.appUrl,
     );
 
-    const handleLinkedInClick = useDeepLink(
+    const handleLinkedInClick: DeepLinkHandler = useDeepLink(
         SOCIAL_LINKS.linkedin.webUrl,
         SOCIAL_LINKS.linkedin.appUrl,
     );

@@ -6,7 +6,7 @@ export type DeepLinkHandler = (event: MouseEvent<HTMLAnchorElement>) => void;
 
 export interface UseDeepLinkOptions {
     /**
-     * Whether to fallback to web URL if app doesn't open.
+     * Whether to fall back to web URL if app doesn't open.
      * If false, user must manually confirm or reject the app opening dialog.
      * @default false
      */
@@ -32,7 +32,7 @@ export const useDeepLink = (
 ): DeepLinkHandler => {
     const { enableFallback = false, fallbackDelayMs = 2500 } = options;
 
-    const isMobileDevice = useIsMobileDevice();
+    const isMobileDevice: boolean = useIsMobileDevice();
 
     return (event: MouseEvent<HTMLAnchorElement>): void => {
         if (typeof window === "undefined") {
@@ -47,7 +47,7 @@ export const useDeepLink = (
         event.preventDefault();
 
         let fallbackTimer: number | undefined;
-        let cleanupCalled = false;
+        let cleanupCalled: boolean = false;
 
         const cleanup = (): void => {
             if (cleanupCalled) {
@@ -78,7 +78,7 @@ export const useDeepLink = (
             handleVisibilityChange,
         );
 
-        // Optionally fallback to web if the app deep link fails (e.g., app not installed)
+        // Optionally fall back to web if the app deep link fails (e.g., app not installed)
         if (enableFallback) {
             // This gives users time to confirm the app opening dialog
             fallbackTimer = window.setTimeout((): void => {

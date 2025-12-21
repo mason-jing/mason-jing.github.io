@@ -15,7 +15,7 @@ export const useIsMobileDevice = (): boolean => {
             return;
         }
 
-        let cancelled = false;
+        let cancelled: boolean = false;
 
         import("react-device-detect")
             .then((module): void => {

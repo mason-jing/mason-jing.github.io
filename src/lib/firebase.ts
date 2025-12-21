@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
+import { initializeApp, type FirebaseApp } from "firebase/app";
+import { getDatabase, Database } from "firebase/database";
 
 // Firebase configuration from environment variables
 // See .env.example for required variables
@@ -15,7 +15,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app: FirebaseApp = initializeApp(firebaseConfig);
 
 // Get database reference
-export const db = getDatabase(app);
+export const db: Database = getDatabase(app);

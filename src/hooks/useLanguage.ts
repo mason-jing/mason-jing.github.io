@@ -29,7 +29,7 @@ export const useLanguage = (): UseLanguageReturn => {
                 console.error("切换语言失败: ", err),
             );
         }
-        // Update html lang attribute for language-specific styling
+        // Update HTML lang attribute for language-specific styling
         document.documentElement.lang = normalizedLang;
     }, [lang, i18n]);
 

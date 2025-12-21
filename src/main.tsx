@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import { HomePage } from "./components";
-import "./locales"; // Initialize i18n
+import { i18nInitPromise } from "./locales";
 
 import "./styles/index.scss";
 
@@ -16,8 +16,11 @@ const router = createBrowserRouter([
     { path: "/:lang", element: <HomePage /> },
 ]);
 
-createRoot(document.getElementById("root")!).render(
-    <StrictMode>
-        <RouterProvider router={router} />
-    </StrictMode>,
-);
+(async () => {
+    await i18nInitPromise;
+    createRoot(document.getElementById("root")!).render(
+        <StrictMode>
+            <RouterProvider router={router} />
+        </StrictMode>,
+    );
+})();
