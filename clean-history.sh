@@ -19,7 +19,7 @@ git branch backup-before-clean
 
 # Remove sensitive data from firebase.ts history
 echo "Removing sensitive data from git history..."
-git filter-repo --path src/lib/firebase.ts --invert-paths --force
+git filter-repo --path src/firebase.ts --path src/lib/firebase.ts --invert-paths --force
 
 # Restore firebase.ts with safe version
 echo "Restoring firebase.ts with environment variables..."
