@@ -11,7 +11,7 @@ export const useIsMobileDevice = (): boolean => {
     const [isMobileDevice, setIsMobileDevice] = useState<boolean>(false);
 
     useEffect((): (() => void) | void => {
-        if (typeof window === "undefined") {
+        if (globalThis.window === undefined) {
             return;
         }
 

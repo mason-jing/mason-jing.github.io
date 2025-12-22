@@ -35,7 +35,7 @@ export const useDeepLink = (
     const isMobileDevice: boolean = useIsMobileDevice();
 
     return (event: MouseEvent<HTMLAnchorElement>): void => {
-        if (typeof window === "undefined") {
+        if (globalThis.window === undefined) {
             return;
         }
 
@@ -57,10 +57,10 @@ export const useDeepLink = (
             cleanupCalled = true;
 
             if (fallbackTimer !== undefined) {
-                window.clearTimeout(fallbackTimer);
+                globalThis.window.clearTimeout(fallbackTimer);
             }
 
-            window.document.removeEventListener(
+            globalThis.window.document.removeEventListener(
                 "visibilitychange",
                 handleVisibilityChange,
             );
@@ -68,12 +68,12 @@ export const useDeepLink = (
 
         const handleVisibilityChange = (): void => {
             // If page becomes hidden, user likely confirmed opening the app
-            if (window.document.visibilityState === "hidden") {
+            if (globalThis.window.document.visibilityState === "hidden") {
                 cleanup();
             }
         };
 
-        window.document.addEventListener(
+        globalThis.window.document.addEventListener(
             "visibilitychange",
             handleVisibilityChange,
         );
@@ -81,8 +81,8 @@ export const useDeepLink = (
         // Optionally fall back to web if the app deep link fails (e.g., app not installed)
         if (enableFallback) {
             // This gives users time to confirm the app opening dialog
-            fallbackTimer = window.setTimeout((): void => {
-                window.open(webUrl, "_blank", "noopener,noreferrer");
+            fallbackTimer = globalThis.window.setTimeout((): void => {
+                globalThis.window.open(webUrl, "_blank", "noopener,noreferrer");
                 cleanup();
             }, fallbackDelayMs);
         }
@@ -91,6 +91,6 @@ export const useDeepLink = (
         // Note: This may show a confirmation dialog on some browsers/devices
         // If enableFallback is false, user must manually confirm or reject the dialog
         // If enableFallback is true, users have fallbackDelayMs milliseconds to confirm before fallback to web
-        window.location.href = appUrl;
+        globalThis.window.location.href = appUrl;
     };
 };

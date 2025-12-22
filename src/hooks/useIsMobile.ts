@@ -10,18 +10,18 @@ import { useEffect, useState } from "react";
  */
 export const useIsMobile = (mobileBreakpoint: number = 768): boolean => {
     const getIsMobile = (): boolean =>
-        typeof window !== "undefined"
-            ? window.innerWidth < mobileBreakpoint
-            : false;
+        globalThis.window === undefined
+            ? false
+            : globalThis.window.innerWidth < mobileBreakpoint;
 
     const [isMobile, setIsMobile] = useState<boolean>(getIsMobile);
 
     useEffect((): (() => void) | void => {
-        if (typeof window === "undefined" || !window.matchMedia) {
+        if (!globalThis.window?.matchMedia) {
             return;
         }
 
-        const mql: MediaQueryList = window.matchMedia(
+        const mql: MediaQueryList = globalThis.window.matchMedia(
             `(max-width: ${mobileBreakpoint - 1}px)`,
         );
 
