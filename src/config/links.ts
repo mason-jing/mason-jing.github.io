@@ -1,4 +1,4 @@
-import type { SocialLink, SocialPlatform } from "../types";
+import type { SocialLink, SocialPlatform } from "@/types";
 
 export const SOCIAL_LINKS: Record<SocialPlatform, SocialLink> = {
     instagram: {

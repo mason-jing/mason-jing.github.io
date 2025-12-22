@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { DataSnapshot, onValue, ref, set } from "firebase/database";
 import type { DatabaseReference, Unsubscribe } from "firebase/database";
 
-import { db } from "../lib";
+import { db } from "@/lib";
 
 export interface UseCounterReturn {
     count: number;

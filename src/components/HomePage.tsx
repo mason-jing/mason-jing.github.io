@@ -1,11 +1,11 @@
 import { useTranslation } from "react-i18next";
 
-import { SOCIAL_LINKS } from "../config";
-import { useCounter, useLanguage, useSocialLink } from "../hooks";
-import instagramLogo from "../assets/instagram.svg";
-import linkedinLogo from "../assets/linkedin.svg";
+import { SOCIAL_LINKS } from "@/config";
+import { useCounter, useLanguage, useSocialLink } from "@/hooks";
+import instagramLogo from "@/assets/instagram.svg";
+import linkedinLogo from "@/assets/linkedin.svg";
 
-import "../styles/HomePage.scss";
+import "@/styles/HomePage.scss";
 
 export default function HomePage() {
     const { t } = useTranslation();

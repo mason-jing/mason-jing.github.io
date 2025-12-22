@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import type { NavigateFunction } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import type { SupportedLanguage } from "../types";
+import type { SupportedLanguage } from "@/types";
 
 export interface UseLanguageReturn {
     handleToggle: () => void;

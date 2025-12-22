@@ -1,8 +1,9 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp, type FirebaseApp } from "firebase/app";
-import { getDatabase, Database } from "firebase/database";
+import { initializeApp } from "firebase/app";
+import type { FirebaseApp } from "firebase/app";
+import { Database, getDatabase } from "firebase/database";
 
-import type { FirebaseConfig } from "../types";
+import type { FirebaseConfig } from "@/types";
 
 // Firebase configuration from environment variables
 // See .env.example for required variables

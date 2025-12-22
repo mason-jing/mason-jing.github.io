@@ -1,5 +1,6 @@
 import "i18next";
-import type { PageContent } from "../types";
+
+import type { PageContent } from "@/types";
 
 declare module "i18next" {
     interface CustomTypeOptions {

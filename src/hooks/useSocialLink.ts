@@ -1,5 +1,6 @@
-import { SOCIAL_LINKS } from "../config";
-import { useDeepLink, type DeepLinkHandler } from "./useDeepLink";
+import { SOCIAL_LINKS } from "@/config";
+import { useDeepLink } from "./useDeepLink";
+import type { DeepLinkHandler } from "./useDeepLink";
 
 export interface UseSocialLinkReturn {
     handleInstagramClick: DeepLinkHandler;
