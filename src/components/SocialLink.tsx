@@ -3,7 +3,7 @@ import type { JSX } from "react";
 import { instagramSvg, linkedinSvg } from "@/assets";
 import { LINK_TARGET, LINK_REL, SOCIAL_LINKS } from "@/config";
 import { useSocialLink } from "@/hooks";
-import type { DeepLinkHandler } from "@/hooks";
+import type { DeepLinkHandler, UseSocialLinkReturn } from "@/hooks";
 
 import "@/styles/SocialLink.scss";
 
@@ -26,7 +26,7 @@ const SocialLink = ({ href, onClick, img }: SocialLinkProps): JSX.Element => (
 );
 
 export const InstagramLink = (): JSX.Element => {
-    const { handleInstagramClick } = useSocialLink();
+    const { handleInstagramClick }: UseSocialLinkReturn = useSocialLink();
 
     const props: SocialLinkProps = {
         href: SOCIAL_LINKS.instagram.webUrl,
@@ -42,7 +42,7 @@ export const InstagramLink = (): JSX.Element => {
 };
 
 export const LinkedInLink = (): JSX.Element => {
-    const { handleLinkedInClick } = useSocialLink();
+    const { handleLinkedInClick }: UseSocialLinkReturn = useSocialLink();
 
     const props: SocialLinkProps = {
         href: SOCIAL_LINKS.linkedin.webUrl,
