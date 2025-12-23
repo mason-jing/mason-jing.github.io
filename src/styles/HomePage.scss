@@ -1,29 +1,8 @@
-// Variables
-$logo-size: 6em;
-$logo-padding: 1.5em;
-$instagram-color: #e1306caa;
-$linkedin-color: #0a66c2aa;
-
 #root {
     max-width: 1280px;
     margin: 0 auto;
     padding: 2rem;
     text-align: center;
-}
-
-.logo {
-    height: $logo-size;
-    padding: $logo-padding;
-    will-change: filter;
-    transition: filter 300ms;
-
-    &:hover {
-        filter: drop-shadow(0 0 2em $instagram-color);
-    }
-
-    &.linkedin:hover {
-        filter: drop-shadow(0 0 2em $linkedin-color);
-    }
 }
 
 .card {

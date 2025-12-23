@@ -1,17 +1,16 @@
+import type { JSX } from "react";
+
 import { useTranslation } from "react-i18next";
 
-import { SOCIAL_LINKS } from "@/config";
-import { useCounter, useLanguage, useSocialLink } from "@/hooks";
-import instagramLogo from "@/assets/instagram.svg";
-import linkedinLogo from "@/assets/linkedin.svg";
+import { InstagramLink, LinkedInLink } from "@/components";
+import { useCounter, useLanguage } from "@/hooks";
 
 import "@/styles/HomePage.scss";
 
-export default function HomePage() {
+export default function HomePage(): JSX.Element {
     const { t } = useTranslation();
     const { count, loading, handleClick } = useCounter();
     const { handleToggle } = useLanguage();
-    const { handleInstagramClick, handleLinkedInClick } = useSocialLink();
 
     return (
         <>
@@ -19,30 +18,8 @@ export default function HomePage() {
                 <button onClick={handleToggle}>{t("toggle")}</button>
             </div>
             <div>
-                <a
-                    href={SOCIAL_LINKS.instagram.webUrl}
-                    target="_blank"
-                    onClick={handleInstagramClick}
-                    rel="noopener noreferrer"
-                >
-                    <img
-                        src={instagramLogo}
-                        className="logo"
-                        alt="Instagram logo"
-                    />
-                </a>
-                <a
-                    href={SOCIAL_LINKS.linkedin.webUrl}
-                    target="_blank"
-                    onClick={handleLinkedInClick}
-                    rel="noopener noreferrer"
-                >
-                    <img
-                        src={linkedinLogo}
-                        className="logo linkedin"
-                        alt="LinkedIn logo"
-                    />
-                </a>
+                <InstagramLink />
+                <LinkedInLink />
             </div>
             <h1>{t("h1")}</h1>
             <h1>{t("h2")}</h1>
