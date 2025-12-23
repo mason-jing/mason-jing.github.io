@@ -1,16 +1,19 @@
 import type { JSX } from "react";
 
 import { useTranslation } from "react-i18next";
+import type { UseTranslationResponse } from "react-i18next";
 
 import { InstagramLink, LinkedInLink } from "@/components";
 import { useCounter, useLanguage } from "@/hooks";
+import type { UseCounterReturn, UseLanguageReturn } from "@/hooks";
 
 import "@/styles/HomePage.scss";
 
 export default function HomePage(): JSX.Element {
-    const { t } = useTranslation();
-    const { count, loading, handleClick } = useCounter();
-    const { handleToggle } = useLanguage();
+    const { t }: UseTranslationResponse<"translation", undefined> =
+        useTranslation();
+    const { count, loading, handleClick }: UseCounterReturn = useCounter();
+    const { handleToggle }: UseLanguageReturn = useLanguage();
 
     return (
         <>
