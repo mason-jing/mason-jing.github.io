@@ -1,5 +1,6 @@
 import type { MouseEvent } from "react";
 
+import { LINK_TARGET, LINK_REL } from "@/config";
 import { useIsMobileDevice } from "./useIsMobileDevice";
 
 export type DeepLinkHandler = (event: MouseEvent<HTMLAnchorElement>) => void;
@@ -82,7 +83,7 @@ export const useDeepLink = (
         if (enableFallback) {
             // This gives users time to confirm the app opening dialog
             fallbackTimer = globalThis.window.setTimeout((): void => {
-                globalThis.window.open(webUrl, "_blank", "noopener,noreferrer");
+                globalThis.window.open(webUrl, LINK_TARGET, LINK_REL);
                 cleanup();
             }, fallbackDelayMs);
         }
