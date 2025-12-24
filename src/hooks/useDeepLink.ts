@@ -15,7 +15,7 @@ export interface UseDeepLinkOptions {
     /**
      * Delay before falling back to web URL if app doesn't open (ms).
      * Only used if enableFallback is true.
-     * @default 2500
+     * @default 2000
      */
     fallbackDelayMs?: number;
 }
@@ -31,17 +31,15 @@ export const useDeepLink = (
     appUrl: string,
     options: UseDeepLinkOptions = {},
 ): DeepLinkHandler => {
-    const { enableFallback = false, fallbackDelayMs = 2500 } = options;
+    const {
+        enableFallback = false,
+        fallbackDelayMs = 2000,
+    }: UseDeepLinkOptions = options;
 
     const isMobileDevice: boolean = useIsMobileDevice();
 
     return (event: MouseEvent<HTMLAnchorElement>): void => {
-        if (globalThis.window === undefined) {
-            return;
-        }
-
-        // Desktop keeps normal <a> behavior
-        if (!isMobileDevice) {
+        if (globalThis.window === undefined || !isMobileDevice) {
             return;
         }
 
